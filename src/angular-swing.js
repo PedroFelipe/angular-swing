@@ -46,11 +46,11 @@ angular
                     });
                 });
 
-                card.throwOutConfidence = function (offset, elementWidth) {
+                Card.throwOutConfidence = function (offset, elementWidth) {
                     return Math.min(Math.abs(offset) / (elementWidth / 2), 1);
                 };
 
-                card.isThrowOut = function (offset, elementWidth) {
+                Card.isThrowOut = function (offset, elementWidth) {
                     return Card.throwOutConfidence(offset, (elementWidth / 2)) == 1;
                 };
             }
