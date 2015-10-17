@@ -12,21 +12,7 @@ angular
             controller: function ($scope) {
                 var stack;
 
-                var config = { };
-
-                if ($scope.isThrowOut) {
-                  config.isThrowOut = function (offset, elementWidth) {
-                    return $scope.isThrowOut({ offset: offset, elementWidth: elementWidth });
-                  };
-                }
-
-                if ($scope.throwOutConfidence) {
-                  config.throwOutConfidence = function (offset, elementWidth) {
-                    return $scope.throwOutConfidence({ offset: offset, elementWidth: elementWidth });
-                  };
-                }
-
-                stack = Swing.Stack(config);
+                stack = Swing.Stack();
 
                 this.add = function (cardElement) {
                     return stack.createCard(cardElement);
@@ -59,6 +45,14 @@ angular
                         scope['swingOn' + eventName.charAt(0).toUpperCase() + eventName.slice(1)]({eventName: eventName, eventObject: eventObject});
                     });
                 });
+
+                card.throwOutConfidence = function (offset, elementWidth) {
+                    return Math.min(Math.abs(offset) / (elementWidth / 2), 1);
+                };
+
+                card.isThrowOut = function (offset, elementWidth) {
+                    return Card.throwOutConfidence(offset, (elementWidth / 2)) == 1;
+                };
             }
         };
     });
