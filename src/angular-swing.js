@@ -10,9 +10,16 @@ angular
               throwOutConfidence: '&'
             },
             controller: function ($scope) {
-                var stack;
+                var stack,
+                    config;
 
-                stack = Swing.Stack();
+                config = {
+                    throwOutConfidence: function () {
+                        return 1;
+                    }
+                };
+
+                stack = Swing.Stack(config);
 
                 this.add = function (cardElement) {
                     return stack.createCard(cardElement);
