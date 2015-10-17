@@ -17,13 +17,13 @@ angular
                 if ($scope.isThrowOut) {
                   config.isThrowOut = function (offset, elementWidth) {
                     return $scope.isThrowOut({ offset: offset, elementWidth: elementWidth });
-                  }
+                  };
                 }
 
                 if ($scope.throwOutConfidence) {
                   config.throwOutConfidence = function (offset, elementWidth) {
                     return $scope.throwOutConfidence({ offset: offset, elementWidth: elementWidth });
-                  }
+                  };
                 }
 
                 stack = Swing.Stack(config);
