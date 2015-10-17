@@ -21,11 +21,11 @@ gulp.task('clean', ['lint'], function (cb) {
     del(['dist'], cb);
 });
 
-gulp.task('bundle', ['clean'], function () {
+gulp.task('bundle', function () {
     return gulp
         .src('./src/angular-swing.js')
         .pipe(browserify({
-            //debug : true
+            debug: true
         }))
         .pipe(gulp.dest('./dist/'));
 });
